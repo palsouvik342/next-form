@@ -84,6 +84,7 @@ const [errEmail,setErrEmail] = useState("");
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>}
+      <h1 style={{textAlign:"center"}}>Contact form</h1>        
       <form onSubmit={onHandleSubmit}>
           <label htmlFor="first_name">First Name</label>
           <input type="text" onChange={(e)=>{setFirstName(e.target.value)}}  name='first_name' id='first_name' className='form-control' width={100}/>
