@@ -16,7 +16,7 @@ export default async function handler(req, res) {
         const saveContact = await prisma.Contact.create({ data: {
             firstName: firstName,
             lastName: lastName,
-            ph_no : Number(ph_no),
+            ph_no : ph_no,
             email : email
           }
         });
