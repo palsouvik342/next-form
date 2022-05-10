@@ -8,6 +8,9 @@ export default function Home() {
     if(firstName.length === 0){
       setErrFirstName("This field is required");
       return false;
+    }else if(firstName.includes(" ")){
+      setErrFirstName("Spaces are not allowed.");
+      return false;
     } else if(/[0-9]/.test(firstName)){
       setErrFirstName("Firstname can't contain any number")
       return false;
@@ -21,8 +24,8 @@ export default function Home() {
         return false;
       } else {
         setErrLastName("");
-        if(phoneNumber.length < 10 || phoneNumber.length > 10){
-          setErrPhoneNumber("Number can't be less than or greater than 10")
+        if(!phoneNumber.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)){
+          setErrPhoneNumber("Phone number is not valid")
           return false;
         } else{
           setErrPhoneNumber("");
@@ -31,7 +34,7 @@ export default function Home() {
             setErrEmail("Email is not valid")
             return false;
           } else{
-            setErrEmail("")
+            setErrEmail("");
           }
         }
       }
@@ -95,7 +98,7 @@ const [errEmail,setErrEmail] = useState("");
           <p className='text-danger'>{errLastName}</p>
           <br/>
           <label htmlFor="ph_no">Phone Number</label>
-          <input type="number" onChange={(e)=>{setPhoneNumber(e.target.value)}} name='ph_no' id='ph_no' className='form-control' width={100}/>
+          <input type="text" onChange={(e)=>{setPhoneNumber(e.target.value)}} name='ph_no' id='ph_no' className='form-control' width={100}/>
           <p className='text-danger'>{errPhoneNumber}</p>
           <br/>
           <label htmlFor="email">Email</label>
